@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- FAVICON ICON (New Addition) -->
+    <!-- The icon uses an SVG of a simple conversion arrow, matching the primary color -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M16.03 12H8.03m8.03 0l-3.5-3.5m3.5 3.5l-3.5 3.5m-8.03 0l3.5 3.5m-3.5-3.5l3.5-3.5M19.5 12a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
     <!-- SEO Meta Tags - UPDATED -->
     <title>UnitCV: Universal Unit Converter for Length, Weight, Temperature, and More</title>
     <meta name="description" content="Instantly convert units across 10 essential measurement categories including Length, Weight, Temperature, Area, Volume, Time, Speed, Data Storage, Pressure, and Energy. This advanced yet easy-to-use online unit converter delivers fast, accurate, and real-time results with a clean, responsive interface designed for both desktop and mobile users. Whether you’re a student, engineer, scientist, traveler, or anyone needing reliable unit conversions, this tool provides precise calculations in seconds. Built for simplicity and efficiency, it supports all common units such as meters to feet, kilograms to pounds, Celsius to Fahrenheit, square meters to square feet, liters to gallons, hours to minutes, kilometers per hour to miles per hour, bytes to gigabytes, pascals to bars, and joules to calories. no downloads, and no complicated menus—just type, convert, and go. Optimized for speed and accuracy, this converter updates results instantly as you type and is designed with modern SEO best practices to ensure reliable performance. Whether you're doing homework, engineering calculations, cooking conversions, or scientific research, this tool delivers dependable unit conversions anytime, anywhere.">
@@ -140,7 +144,7 @@
             <label for="category-select" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Conversion Type
             </label>
-            <select id="category-select" class="converter-field w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-200 appearance-none">
+            <select id="category-select" class="converter-field w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-200 appearance-none" onchange="populateUnits()">
                 <option value="length">Length</option>
                 <option value="weight">Weight</option>
                 <option value="temperature">Temperature</option>
@@ -477,13 +481,15 @@
 
             // Populate both dropdowns with the new unit options
             for (const key in units) {
-                const option = document.createElement('option');
-                option.value = key;
-                option.textContent = units[key].name;
+                const optionFrom = document.createElement('option');
+                optionFrom.value = key;
+                optionFrom.textContent = units[key].name;
+
+                const optionTo = optionFrom.cloneNode(true);
                 
-                // Clone the option for the "To Unit" select
-                fromUnitSelect.appendChild(option);
-                toUnitSelect.appendChild(option.cloneNode(true));
+                // Append all options to the dropdowns
+                fromUnitSelect.appendChild(optionFrom);
+                toUnitSelect.appendChild(optionTo);
             }
 
             // Set default selections for a smoother start based on category
@@ -491,7 +497,7 @@
             switch(category) {
                 case 'length':
                     defaultFrom = 'meter';
-                    defaultTo = 'centimeter'; // Changed default to cm for better mobile visibility
+                    defaultTo = 'centimeter'; 
                     break;
                 case 'weight':
                     defaultFrom = 'kilogram';
@@ -530,7 +536,6 @@
                     defaultTo = 'kilocalorie';
                     break;
                 default:
-                    // Fallback to the first two units if category is unknown
                     const keys = Object.keys(units);
                     defaultFrom = keys[0];
                     defaultTo = keys[1] || defaultFrom;
@@ -541,23 +546,21 @@
             
             // --- Mobile UX Improvement: Dynamic Input Restrictions ---
             if (category === 'temperature') {
-                // Allow negative values for temperature
                 inputValue.removeAttribute('min');
                 inputValue.placeholder = "e.g., -10 or 25";
             } else {
-                // Restrict to non-negative values for all others
                 inputValue.setAttribute('min', '0');
                 inputValue.placeholder = "Enter value (must be ≥ 0)";
             }
 
-            // Resetting input value to 1 if it's currently negative and shouldn't be
             if (category !== 'temperature' && parseFloat(inputValue.value) < 0) {
                 inputValue.value = 1;
             }
 
-            // Run conversion immediately after populating
+            // After populating, run conversion
             convert();
         }
+        
 
         /**
          * Performs the unit conversion based on the selected category, units, and input value.
@@ -570,12 +573,12 @@
             const value = parseFloat(inputValue.value);
             
             // Validate input
-            if (isNaN(value)) {
-                outputValue.value = "Invalid Input";
+            if (isNaN(value) || !fromUnitKey || !toUnitKey) {
+                outputValue.value = "Invalid Input or Unit Selection";
                 return;
             }
             
-            // Enforce non-negative for non-temperature categories (in case user bypasses HTML 'min')
+            // Enforce non-negative for non-temperature categories
             if (category !== 'temperature' && value < 0) {
                 outputValue.value = "Value must be non-negative";
                 return;
@@ -617,7 +620,7 @@
             if (category === 'data' && result > 1000) {
                 fixedDecimals = 2;
             } else if (category === 'energy' && toUnitKey === 'electronvolt') {
-                fixedDecimals = 0; // Use 0 for extremely large/small factors like eV
+                fixedDecimals = 0; 
             }
             
             // Apply toFixed for precision, then use parseFloat to remove unnecessary trailing zeros
@@ -631,14 +634,11 @@
 
         // --- Event Listeners and Initialization ---
 
-        // Listen for category changes
-        categorySelect.addEventListener('change', populateUnits);
-
         // Listen for input and unit changes
         inputValue.addEventListener('input', convert);
         fromUnitSelect.addEventListener('change', convert);
         toUnitSelect.addEventListener('change', convert);
-
+        
         // Initialize the app when the window loads
         window.onload = () => {
             populateUnits();
