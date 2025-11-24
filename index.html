@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UnitCV</title>
+    
+    <!-- SEO Meta Tags - UPDATED -->
+    <title>UnitCV: Universal Unit Converter for Length, Weight, Temperature, and More</title>
+    <meta name="description" content="Instantly convert units across 10 essential measurement categories including Length, Weight, Temperature, Area, Volume, Time, Speed, Data Storage, Pressure, and Energy. This advanced yet easy-to-use online unit converter delivers fast, accurate, and real-time results with a clean, responsive interface designed for both desktop and mobile users. Whether you’re a student, engineer, scientist, traveler, or anyone needing reliable unit conversions, this tool provides precise calculations in seconds. Built for simplicity and efficiency, it supports all common units such as meters to feet, kilograms to pounds, Celsius to Fahrenheit, square meters to square feet, liters to gallons, hours to minutes, kilometers per hour to miles per hour, bytes to gigabytes, pascals to bars, and joules to calories. no downloads, and no complicated menus—just type, convert, and go. Optimized for speed and accuracy, this converter updates results instantly as you type and is designed with modern SEO best practices to ensure reliable performance. Whether you're doing homework, engineering calculations, cooking conversions, or scientific research, this tool delivers dependable unit conversions anytime, anywhere.">
+    <meta name="keywords" content="unit converter, length converter, weight converter, temperature conversion, area, volume, speed, data storage, pressure, energy, metric, imperial">
+    <meta name="author" content="UnitCV Developer">
 
+    <!-- Open Graph / Social Media Tags (for better link previews) -->
+    <meta property="og:title" content="UnitCV: Universal Unit Converter">
+    <meta property="og:description" content="Convert units across 10 categories including Length, Weight, Temperature, Data Storage, and Energy. Fast, accurate, and responsive unit converter for students, engineers, and travelers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="YOUR_WEBSITE_URL_HERE">
+    <meta property="og:image" content="https://placehold.co/1200x630/4f46e5/ffffff?text=UnitCV">
+
+    <!-- REQUIRED for AdSense: Set your publisher ID here -->
     <meta name="google-adsense-account" content="ca-pub-2239313494905583">
-    <!--
+    
+    <!-- 
     !!! AD SENSE INTEGRATION POINT 1: GLOBAL CODE !!!
-    PASTE YOUR GOOGLE ADSENSE CODE SNIPPET HERE (usually includes your Publisher ID).
-    This script is necessary for Google to verify your site and run Auto ads.
+    This script loads the AdSense library and MUST be placed in the <head>.
     -->
     <!-- START GOOGLE ADSENSE GLOBAL SCRIPT -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2239313494905583"
-     crossorigin="anonymous"></script>    <!-- END GOOGLE ADSENSE GLOBAL SCRIPT -->
+     crossorigin="anonymous"></script>
+    <!-- END GOOGLE ADSENSE GLOBAL SCRIPT -->
 
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -70,48 +84,53 @@
         .modal-content {
             transition: transform 0.3s ease-in-out;
         }
+        /* AdSense specific styling: ensuring the ad container doesn't overflow */
+        .adsbygoogle {
+            display: block;
+            width: 100%;
+            min-height: 50px; /* Minimum height to prevent CLS */
+        }
     </style>
 </head>
 <body class="min-h-screen flex items-start justify-center p-4 flex-col items-center">
 
-    <!-- Removed the external div wrapper for the button -->
-
+    <!-- The main converter card is centered and uses max-w-xl for responsiveness -->
     <div id="app" class="w-full max-w-xl bg-white dark:bg-gray-800 shadow-2xl dark:shadow-none rounded-xl p-6 md:p-8">
         
-        <!-- New Flex container for Title and Toggle -->
+        <!-- Header: Title and Theme Toggle -->
         <div class="flex justify-between items-center mb-2">
             <h1 class="text-3xl font-bold text-primary dark:text-secondary text-left">
                 UnitCV
             </h1>
-            <!-- Theme Toggle Button moved here, removed external margin classes -->
             <button id="theme-toggle" onclick="toggleTheme()" class="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-150">
-                <!-- Icon will be dynamically updated by JS -->
+                <!-- Icons for Theme Toggle -->
                 <svg id="sun-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 <svg id="moon-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
             </button>
         </div>
 
-        <!-- The introductory paragraph needs an updated margin to fit the new layout -->
+        <!-- Introductory Paragraph -->
         <p class="text-left text-gray-500 dark:text-gray-400 mb-4 mt-2">
             Convert Length, Weight, Temperature, Area, Volume, Time, Speed, Data Storage, Pressure, and Energy units instantly.
         </p>
 
         <!--
         !!! AD SENSE INTEGRATION POINT 2: AD UNIT SLOT !!!
-        This is a container for a responsive banner ad. PASTE YOUR AD UNIT CODE HERE.
+        This container is centered and provides responsive spacing (my-4). 
+        PASTE YOUR RESPONSIVE DISPLAY AD UNIT CODE HERE (replace the comments inside).
         -->
         <div class="my-4 flex justify-center">
-            <!-- START GOOGLE ADSENSE AD UNIT CODE -->
-            <!-- PASTE YOUR GOOGLE ADSENSE DISPLAY AD UNIT CODE HERE. -->
-            <!-- Example:
+            <!-- START GOOGLE ADSENSE AD UNIT CODE (RESPONSIVE) -->
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-2239313494905583"
-                 data-ad-slot="YYYYYYYYYY"
+                 data-ad-slot="YOUR_AD_SLOT_ID_HERE"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            -->
+            <script>
+                // This command ensures the ad unit is loaded after the main AdSense script.
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
             <!-- END GOOGLE ADSENSE AD UNIT CODE -->
         </div>
         <!-- End Ad Slot -->
@@ -137,17 +156,17 @@
 
         <!-- Input and Output Section -->
         <div class="space-y-6">
-            <!-- FROM Input -->
-            <div class="flex flex-col md:flex-row gap-4 items-center">
+            <!-- FROM Input (Wider input area on mobile) -->
+            <div class="flex flex-col md:flex-row gap-4 items-end md:items-center">
                 <div class="w-full">
                     <label for="input-value" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Input Value
                     </label>
-                    <!-- Removed fixed min="0" to allow dynamic setting based on category -->
                     <input type="number" id="input-value" value="1" step="any"
-                           class="converter-field w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-lg font-semibold text-gray-800 dark:text-gray-100 dark:bg-gray-700"
-                           placeholder="Enter value" oninput="convert()">
+                            class="converter-field w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-lg font-semibold text-gray-800 dark:text-gray-100 dark:bg-gray-700"
+                            placeholder="Enter value" oninput="convert()">
                 </div>
+                <!-- Unit selector takes half the width on desktop, full width on mobile -->
                 <div class="w-full md:w-1/2">
                     <label for="from-unit" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         From Unit
@@ -157,23 +176,25 @@
                 </div>
             </div>
 
-            <!-- Conversion Arrow Icon -->
+            <!-- Conversion Arrow Icon (Center aligned) -->
             <div class="flex justify-center py-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-secondary dark:text-primary transform rotate-90 md:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <!-- Arrow rotates 90 degrees on mobile to show vertical flow -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-secondary dark:text-primary transition-transform duration-300 transform rotate-90 md:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
             </div>
 
-            <!-- TO Output -->
-            <div class="flex flex-col md:flex-row gap-4 items-center">
+            <!-- TO Output (Wider output area on mobile) -->
+            <div class="flex flex-col md:flex-row gap-4 items-end md:items-center">
                 <div class="w-full">
                     <label for="output-value" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Converted Result
                     </label>
                     <input type="text" id="output-value" readonly
-                           class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-lg font-bold bg-purple-50 dark:bg-purple-900 text-secondary dark:text-purple-300 cursor-not-allowed"
-                           placeholder="Result">
+                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-lg font-bold bg-purple-50 dark:bg-purple-900 text-secondary dark:text-purple-300 cursor-not-allowed"
+                            placeholder="Result">
                 </div>
+                <!-- Unit selector takes half the width on desktop, full width on mobile -->
                 <div class="w-full md:w-1/2">
                     <label for="to-unit" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         To Unit
@@ -188,7 +209,6 @@
     <!-- Footer with Privacy Link -->
     <footer class="w-full max-w-xl text-center mt-6 text-sm text-gray-500 dark:text-gray-400 pb-4">
         &copy; 2024 UnitCV.
-        <!-- Updated link to open the modal -->
         <button onclick="showModal('privacy-modal')" class="text-primary dark:text-secondary hover:text-secondary dark:hover:text-primary hover:underline ml-2">
             Privacy Policy
         </button>
@@ -562,9 +582,9 @@
             }
 
             if (fromUnitKey === toUnitKey) {
-                 // Use parseFloat(toFixed(4)) to ensure consistency and remove unnecessary trailing zeros
-                 outputValue.value = parseFloat(value.toFixed(4)); 
-                 return;
+                // Use parseFloat(toFixed(4)) to ensure consistency and remove unnecessary trailing zeros
+                outputValue.value = parseFloat(value.toFixed(4)); 
+                return;
             }
             
             let result;
@@ -601,7 +621,12 @@
             }
             
             // Apply toFixed for precision, then use parseFloat to remove unnecessary trailing zeros
-            outputValue.value = parseFloat(result.toFixed(fixedDecimals));
+            // Use scientific notation if the number is very large or very small
+            if (Math.abs(result) > 1e6 || (Math.abs(result) < 1e-4 && Math.abs(result) !== 0)) {
+                outputValue.value = result.toExponential(fixedDecimals);
+            } else {
+                outputValue.value = parseFloat(result.toFixed(fixedDecimals));
+            }
         }
 
         // --- Event Listeners and Initialization ---
@@ -624,5 +649,3 @@
     </script>
 </body>
 </html>
-
-
