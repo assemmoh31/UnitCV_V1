@@ -1,6 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+    // Ensure ezstandalone command queue exists
+    window.ezstandalone = window.ezstandalone || {};
+    ezstandalone.cmd = ezstandalone.cmd || [];
+
+    // On page load, show all placeholders (safe for static content)
+    ezstandalone.cmd.push(function () {
+        ezstandalone.showAds();
+    });
+
+    // Function to refresh ads for dynamically loaded content
+    function refreshDynamicAds(...placeholderIds) {
+        ezstandalone.cmd.push(function () {
+            if (placeholderIds && placeholderIds.length) {
+                ezstandalone.showAds(...placeholderIds);
+            } else {
+                ezstandalone.showAds();
+            }
+        });
+    }
+
+    // Function to destroy specific placeholders (reuse them later)
+    function destroyAds(...placeholderIds) {
+        ezstandalone.cmd.push(function () {
+            if (placeholderIds && placeholderIds.length) {
+                ezstandalone.destroyPlaceholders(...placeholderIds);
+            }
+        });
+    }
+
+    // Function to destroy all placeholders if needed
+    function destroyAllAds() {
+        ezstandalone.cmd.push(function () {
+            ezstandalone.destroyAll();
+        });
+    }
+
+    // Example: refresh ads when new content is added dynamically
+    // refreshDynamicAds(104, 105); // Uncomment and replace IDs if needed
+</script>
+
     <!-- Ezoic Scripts -->
     <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
     <script>
