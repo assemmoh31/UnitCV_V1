@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+    // Ensure ezstandalone command queue exists
+    window.ezstandalone = window.ezstandalone || {};
+    ezstandalone.cmd = ezstandalone.cmd || [];
+
+    // On page load, show all placeholders (safe for static content)
+    ezstandalone.cmd.push(function () {
+        ezstandalone.showAds();
+    });
+
+    // Function to refresh ads for dynamically loaded content
+    function refreshDynamicAds(...placeholderIds) {
+        ezstandalone.cmd.push(function () {
+            if (placeholderIds && placeholderIds.length) {
+                ezstandalone.showAds(...placeholderIds);
+            } else {
+                ezstandalone.showAds();
+            }
+        });
+    }
+
+    // Function to destroy specific placeholders (reuse them later)
+    function destroyAds(...placeholderIds) {
+        ezstandalone.cmd.push(function () {
+            if (placeholderIds && placeholderIds.length) {
+                ezstandalone.destroyPlaceholders(...placeholderIds);
+            }
+        });
+    }
+
+    // Function to destroy all placeholders if needed
+    function destroyAllAds() {
+        ezstandalone.cmd.push(function () {
+            ezstandalone.destroyAll();
+        });
+    }
+
+    // Example: refresh ads when new content is added dynamically
+    // refreshDynamicAds(104, 105); // Uncomment and replace IDs if needed
+</script>
+
+    <!-- Ezoic Scripts -->
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="ZjPN5bjnPZl0B5e8NfQ0ZL8VnSfiSYc-YuAVA25eoyU" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M16.03 12H8.03m8.03 0l-3.5-3.5m3.5 3.5l-3.5 3.5m-8.03 0l3.5 3.5m-3.5-3.5l3.5-3.5M19.5 12a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <title>UnitCV: Universal Unit Converter for Length, Weight, Temperature, and More</title>
+    <meta name="description" content="Instantly convert units across 10 essential measurement categories including Length, Weight, Temperature, Area, Volume, Time, Speed, Data Storage, Pressure, and Energy. Fast, accurate, and real-time results.">
+    <meta name="keywords" content="unit converter, length converter, weight converter, temperature conversion, area, volume, speed, data storage, pressure, energy, metric, imperial">
+    <meta name="author" content="UnitCV Developer">
+
+    <meta property="og:title" content="UnitCV: Universal Unit Converter">
+    <meta property="og:description" content="Convert units across 10 categories including Length, Weight, Temperature, Data Storage, and Energy. Fast, accurate, and responsive.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="YOUR_WEBSITE_URL_HERE">
+    <meta property="og:image" content="https://placehold.co/1200x630/4f46e5/ffffff?text=UnitCV">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Theme Initializer
+        if (localStorage.theme === 'dark') {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#4f46e5',
+                        'secondary': '#8b5cf6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #f3f4f6; font-family: 'Inter', sans-serif; transition: background-color 0.3s; }
+        .dark body { background-color: #111827; }
+        .converter-field { transition: all 0.2s; border: 2px solid transparent; }
+        .converter-field:focus { border-color: #a78bfa; box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.5); }
+        .modal { transition: opacity 0.3s ease-in-out; }
+        .modal-content { transition: transform 0.3s ease-in-out; }
+        @media (min-width:1024px) {
+            body { display:grid; grid-template-columns:180px minmax(300px,1fr) 180px; justify-content:center; align-items:start; padding:1rem; gap:1.5rem; }
+            #app, footer { grid-column:2/3; width:auto; max-width:100%; margin:0 auto; }
+            .side-banner { display:flex; flex-direction:column; align-items:center; justify-content:flex-start; height:100%; padding-top:2rem; }
+        }
+        @media (max-width:1023px) {
+            body { display:flex; flex-direction:column; align-items:center; padding:1rem; }
+            .side-banner { display:none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LEFT SIDE BANNER (Ezoic Placeholder) -->
+    <div class="side-banner">
+        <div id="ezoic-left-banner"></div>
+    </div>
+
+    <!-- MAIN APPLICATION CONTAINER -->
+    <div id="app" class="w-full max-w-xl bg-white dark:bg-gray-800 shadow-2xl dark:shadow-none rounded-xl p-6 md:p-8">
+        
+        <!-- Ezoic Top Placeholder -->
+        <div id="ezoic-top-banner"></div>
+
+        <!-- Header and Theme Toggle -->
+        <div class="flex justify-between items-center mb-2">
+            <h1 class="text-3xl font-bold text-primary dark:text-secondary text-left">UnitCV</h1>
+            <button id="theme-toggle" onclick="toggleTheme()" class="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-150">
+                <svg id="sun-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <svg id="moon-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            </button>
+        </div>
+
+        <p class="text-left text-gray-500 dark:text-gray-400 mb-4 mt-2">
+            Convert Length, Weight, Temperature, Area, Volume, Time, Speed, Data Storage, Pressure, and Energy units instantly.
+        </p>
+
+        <!-- Category Selector -->
+        <div class="mb-6">
+            <label for="category-select" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Conversion Type</label>
+            <select id="category-select" class="converter-field w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-200 appearance-none" onchange="populateUnits()">
+                <option value="length">Length</option>
+                <option value="weight">Weight</option>
+                <option value="temperature">Temperature</option>
+                <option value="volume">Volume</option>
+                <option value="area">Area</option>
+                <option value="time">Time</option>
+                <option value="speed">Speed</option>
+                <option value="data">Data Storage</option>
+                <option value="pressure">Pressure</option>
+                <option value="energy">Energy</option>
+            </select>
+        </div>
+
+        <!-- Conversion Fields -->
+        <div class="space-y-6">
+            <!-- Input Row -->
+            <div class="flex flex-col md:flex-row gap-4 items-end md:items-center">
+                <div class="w-full">
+                    <label for="input-value" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Input Value</label>
+                    <input type="number" id="input-value" value="1" step="any" class="converter-field w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-lg font-semibold text-gray-800 dark:text-gray-100 dark:bg-gray-700" placeholder="Enter value" oninput="convert()">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <label for="from-unit" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">From Unit</label>
+                    <select id="from-unit" onchange="convert()" class="converter-field w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 appearance-none"></select>
+                </div>
+            </div>
+
+            <!-- Conversion Arrow -->
+            <div class="flex justify-center py-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-secondary dark:text-primary transition-transform duration-300 transform rotate-90 md:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </div>
+
+            <!-- Output Row -->
+            <div class="flex flex-col md:flex-row gap-4 items-end md:items-center">
+                <div class="w-full">
+                    <label for="output-value" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Converted Result</label>
+                    <input type="text" id="output-value" readonly class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-lg font-bold bg-purple-50 dark:bg-purple-900 text-secondary dark:text-purple-300 cursor-not-allowed" placeholder="Result">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <label for="to-unit" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">To Unit</label>
+                    <select id="to-unit" onchange="convert()" class="converter-field w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 appearance-none"></select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ezoic Inline Placeholder -->
+        <div id="ezoic-inline-banner" class="mt-8"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="w-full max-w-xl text-center mt-6 text-sm text-gray-500 dark:text-gray-400 pb-4">
+        &copy; 2024 UnitCV.
+        <button onclick="showModal('privacy-modal')" class="text-primary dark:text-secondary hover:text-secondary dark:hover:text-primary hover:underline ml-2">Privacy Policy</button>
+        <div id="ezoic-footer-banner" class="mt-2"></div>
+    </footer>
+
+    <!-- RIGHT SIDE BANNER (Ezoic Placeholder) -->
+    <div class="side-banner">
+        <div id="ezoic-right-banner"></div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="modal fixed inset-0 bg-gray-900 bg-opacity-75 hidden flex items-center justify-center p-4 z-50" onclick="hideModal('privacy-modal')">
+        <div class="modal-content bg-white dark:bg-gray-800 w-full max-w-lg rounded-xl shadow-2xl overflow-y-auto max-h-[90vh] p-6" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center border-b pb-3 mb-4 border-gray-200 dark:border-gray-700">
+                <h2 class="text-2xl font-bold text-primary dark:text-secondary">Privacy Policy</h2>
+                <button onclick="hideModal('privacy-modal')" class="text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div id="policy-content" class="text-gray-700 dark:text-gray-300 text-sm space-y-4"></div>
+        </div>
+    </div>
+
+    <!-- JS: Units, Conversion, Theme, Modals -->
+    <script>
+        // --- Paste your full original conversion, theme toggle, populateUnits, convert functions, privacy modal JS here ---
+    </script>
+</body>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
+<script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+<script>
+    window.ezstandalone = window.ezstandalone || {};
+    ezstandalone.cmd = ezstandalone.cmd || [];
+</script>
+
+    <?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.unitconvertpro.space/</loc>
+  </url>
+</urlset>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="ZjPN5bjnPZl0B5e8NfQ0ZL8VnSfiSYc-YuAVA25eoyU" />
+    <!-- Title, SEO, and Meta Tags -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M16.03 12H8.03m8.03 0l-3.5-3.5m3.5 3.5l-3.5 3.5m-8.03 0l3.5 3.5m-3.5-3.5l3.5-3.5M19.5 12a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>UnitCV: Universal Unit Converter for Length, Weight, Temperature, and More</title>
+    <meta name="description" content="Instantly convert units across 10 essential measurement categories including Length, Weight, Temperature, Area, Volume, Time, Speed, Data Storage, Pressure, and Energy. This advanced yet easy-to-use online unit converter delivers fast, accurate, and real-time results with a clean, responsive interface designed for both desktop and mobile users.">
+    <meta name="keywords" content="unit converter, length converter, weight converter, temperature conversion, area, volume, speed, data storage, pressure, energy, metric, imperial">
+    <meta name="author" content="UnitCV Developer">
+<meta property="og:title" content="UnitCV: Universal Unit Converter">
+    <meta property="og:description" content="Convert units across 10 categories including Length, Weight, Temperature, Data Storage, and Energy. Fast, accurate, and responsive unit converter for students, engineers, and travelers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="YOUR_WEBSITE_URL_HERE">
+    <meta property="og:image" content="https://placehold.co/1200x630/4f46e5/ffffff?text=UnitCV">
+
+    <!-- AdSense Global Script (Already present) -->
+<meta name="google-adsense-account" content="ca-pub-2239313494905583">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2239313494905583"
+     crossorigin="anonymous"></script>
+    <script 
+    <?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.unitconvertpro.space/</loc>
+  </url>
+</urlset>></script>
+    <!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // --- Theme Initializer Script (Runs before page load) ---
+        if (localStorage.theme === 'dark') {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
+        
+        tailwind.config = {
+            darkMode: 'class', 
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#4f46e5', // Indigo
+                        'secondary': '#8b5cf6', // Violet
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for a nicer appearance and responsive layout */
+        body {
+            background-color: #f3f4f6; 
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s;
+        }
+        .dark body {
+            background-color: #111827;
+        }
+        .converter-field {
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        .converter-field:focus {
+            border-color: #a78bfa; 
+            box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.5);
+        }
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-content {
+            transition: transform 0.3s ease-in-out;
+        }
+        /* AdSense specific styling: ensuring the ad container doesn't overflow */
+        .adsbygoogle {
+            display: block;
+            width: 100%;
+            min-height: 50px; /* Minimum height to prevent CLS */
+        }
+
+        /* Responsive grid for body for side banners (Desktop Layout) */
+        @media (min-width: 1024px) { /* Large screens and up */
+            /* Use grid to center the app and provide space for fixed-width banners */
+            body {
+                display: grid;
+                grid-template-columns: 180px minmax(300px, 1fr) 180px; /* Banners (160px + margin) | Main App | Banners (160px + margin) */
+                justify-content: center;
+                align-items: start; 
+                padding: 1rem;
+                gap: 1.5rem;
+            }
+            #app, footer {
+                grid-column: 2 / 3; /* Main content and footer occupy the middle column */
+                width: auto;
+                max-width: 100%; /* Ensure it fits the central column */
+                margin: 0 auto;
+            }
+            .side-banner {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                height: 100%;
+                padding-top: 2rem; 
+            }
+        }
+        @media (max-width: 1023px) { /* On small screens, side banners are hidden */
+            body {
+                /* Fallback to original mobile layout */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem;
+            }
+            .side-banner {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LEFT SIDE BANNER (Hidden on Mobile) -->
+    <div class="side-banner">
+        <!-- Recommended size for Skyscraper: 160x600 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block; width:160px; height:600px;" 
+             data-ad-client="ca-pub-2239313494905583"
+             data-ad-slot="YOUR_LEFT_BANNER_AD_SLOT_ID_HERE"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <p class="text-xs text-gray-400 mt-2 hidden lg:block">Left Ad Space</p>
+    </div>
+
+    <!-- MAIN APPLICATION CONTAINER -->
+    <div id="app" class="w-full max-w-xl bg-white dark:bg-gray-800 shadow-2xl dark:shadow-none rounded-xl p-6 md:p-8">
+        
+        <!-- Header and Theme Toggle -->
+        <div class="flex justify-between items-center mb-2">
+            <h1 class="text-3xl font-bold text-primary dark:text-secondary text-left">
+                UnitCV
+            </h1>
+            <button id="theme-toggle" onclick="toggleTheme()" class="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-150">
+                <!-- Sun Icon (Light Mode) -->
+                <svg id="sun-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <!-- Moon Icon (Dark Mode) -->
+                <svg id="moon-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            </button>
+        </div>
+
+        <p class="text-left text-gray-500 dark:text-gray-400 mb-4 mt-2">
+            Convert Length, Weight, Temperature, Area, Volume, Time, Speed, Data Storage, Pressure, and Energy units instantly.
+        </p>
+
+        <!-- Category Selector -->
+        <div class="mb-6">
+            <label for="category-select" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Conversion Type
+            </label>
+            <select id="category-select" class="converter-field w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-200 appearance-none" onchange="populateUnits()">
+                <option value="length">Length</option>
+                <option value="weight">Weight</option>
+                <option value="temperature">Temperature</option>
+                <option value="volume">Volume</option>
+                <option value="area">Area</option>
+                <option value="time">Time</option>
+                <option value="speed">Speed</option>
+                <option value="data">Data Storage</option>
+                <option value="pressure">Pressure</option>
+                <option value="energy">Energy</option>
+            </select>
+        </div>
+
+        <!-- Conversion Fields -->
+        <div class="space-y-6">
+            <!-- Input Row -->
+            <div class="flex flex-col md:flex-row gap-4 items-end md:items-center">
+                <div class="w-full">
+                    <label for="input-value" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        Input Value
+                    </label>
+                    <input type="number" id="input-value" value="1" step="any"
+                            class="converter-field w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-lg font-semibold text-gray-800 dark:text-gray-100 dark:bg-gray-700"
+                            placeholder="Enter value" oninput="convert()">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <label for="from-unit" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        From Unit
+                    </label>
+                    <select id="from-unit" onchange="convert()"
+                            class="converter-field w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 appearance-none"></select>
+                </div>
+            </div>
+
+            <!-- Conversion Arrow -->
+            <div class="flex justify-center py-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-secondary dark:text-primary transition-transform duration-300 transform rotate-90 md:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </div>
+
+            <!-- Output Row -->
+            <div class="flex flex-col md:flex-row gap-4 items-end md:items-center">
+                <div class="w-full">
+                    <label for="output-value" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        Converted Result
+                    </label>
+                    <input type="text" id="output-value" readonly
+                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-lg font-bold bg-purple-50 dark:bg-purple-900 text-secondary dark:text-purple-300 cursor-not-allowed"
+                            placeholder="Result">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <label for="to-unit" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        To Unit
+                    </label>
+                    <select id="to-unit" onchange="convert()"
+                            class="converter-field w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 appearance-none"></select>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ad Unit: Ad 1 (Responsive Banner - Slot: 4445936066) -->
+        <div class="mt-8">
+            <ins class="adsbygoogle"
+                 style="display:block; text-align:center;"
+                 data-ad-client="ca-pub-2239313494905583"
+                 data-ad-slot="4445936066"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <p class="text-xs text-gray-400 mt-2 text-center">Responsive Ad Banner (Slot: 4445936066)</p>
+        </div>
+        <!-- End Ad Unit: Ad 1 -->
+    </div>
+    
+    <!-- Footer and Privacy Policy Link -->
+    <footer class="w-full max-w-xl text-center mt-6 text-sm text-gray-500 dark:text-gray-400 pb-4">
+        &copy; 2024 UnitCV.
+        <button onclick="showModal('privacy-modal')" class="text-primary dark:text-secondary hover:text-secondary dark:hover:text-primary hover:underline ml-2">
+            Privacy Policy
+        </button>
+    </footer>
+
+    <!-- RIGHT SIDE BANNER (Hidden on Mobile) -->
+    <div class="side-banner">
+        <!-- Recommended size for Skyscraper: 160x600 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block; width:160px; height:600px;" 
+             data-ad-client="ca-pub-2239313494905583"
+             data-ad-slot="YOUR_RIGHT_BANNER_AD_SLOT_ID_HERE"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <p class="text-xs text-gray-400 mt-2 hidden lg:block">Right Ad Space</p>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="modal fixed inset-0 bg-gray-900 bg-opacity-75 hidden flex items-center justify-center p-4 z-50" onclick="hideModal('privacy-modal')">
+        <div class="modal-content bg-white dark:bg-gray-800 w-full max-w-lg rounded-xl shadow-2xl overflow-y-auto max-h-[90vh] p-6" onclick="event.stopPropagation()">
+            
+            <div class="flex justify-between items-center border-b pb-3 mb-4 border-gray-200 dark:border-gray-700">
+                <h2 class="text-2xl font-bold text-primary dark:text-secondary">Privacy Policy</h2>
+                <button onclick="hideModal('privacy-modal')" class="text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <div id="policy-content" class="text-gray-700 dark:text-gray-300 text-sm space-y-4">
+                <!-- Policy content will be populated by JS -->
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        // --- Unit Definitions and Conversion Logic ---
+
+        // Conversion factors are relative to a base unit.
+        const KILOBYTE = 1024;
+        const MEGABYTE = KILOBYTE * 1024;
+        const GIGABYTE = MEGABYTE * 1024;
+        const TERABYTE = GIGABYTE * 1024;
+
+        const UNITS = {
+            length: {
+                // Base Unit: Meter (1)
+                meter: { name: "Meter", factor: 1 },
+                kilometer: { name: "Kilometer", factor: 1000 },
+                centimeter: { name: "Centimeter", factor: 0.01 },
+                millimeter: { name: "Millimeter", factor: 0.001 },
+                micrometer: { name: "Micrometer", factor: 0.000001 },
+                angstrom: { name: "Angstrom", factor: 1e-10 }, 
+                mile: { name: "Mile", factor: 1609.34 },
+                nauticalMile: { name: "Nautical Mile", factor: 1852 },
+                yard: { name: "Yard", factor: 0.9144 },
+                foot: { name: "Foot", factor: 0.3048 },
+                inch: { name: "Inch", factor: 0.0254 }
+            },
+            weight: {
+                // Base Unit: Kilogram (1)
+                kilogram: { name: "Kilogram", factor: 1 }, 
+                gram: { name: "Gram", factor: 0.001 },
+                milligram: { name: "Milligram", factor: 0.000001 },
+                carat: { name: "Carat (ct)", factor: 0.0002 }, 
+                tonne: { name: "Tonne (Metric Ton)", factor: 1000 },
+                usTon: { name: "US Ton (Short)", factor: 907.185 }, 
+                pound: { name: "Pound (lb)", factor: 0.453592 },
+                ounce: { name: "Ounce (oz)", factor: 0.0283495 }
+            },
+            volume: {
+                // Base Unit: Liter (1)
+                liter: { name: "Liter", factor: 1 }, 
+                milliliter: { name: "Milliliter", factor: 0.001 },
+                cubicCentimeter: { name: "Cubic Centimeter", factor: 0.001 },
+                cubicMeter: { name: "Cubic Meter", factor: 1000 },
+                usGallon: { name: "US Gallon", factor: 3.78541 },
+                imperialGallon: { name: "Imperial Gallon", factor: 4.54609 },
+                usBarrel: { name: "US Barrel (Liquid)", factor: 119.24 }, 
+                fluidOunce: { name: "Fluid Ounce (US)", factor: 0.0295735 }
+            },
+            area: {
+                // Base Unit: Square Meter (1)
+                squareMeter: { name: "Square Meter", factor: 1 }, 
+                squareKilometer: { name: "Square Kilometer", factor: 1000000 },
+                squareCentimeter: { name: "Square Centimeter", factor: 0.0001 },
+                squareFoot: { name: "Square Foot", factor: 0.092903 },
+                squareYard: { name: "Square Yard", factor: 0.836127 },
+                acre: { name: "Acre", factor: 4046.86 },
+                hectare: { name: "Hectare", factor: 10000 },
+                squareMile: { name: "Square Mile", factor: 2589988.11 }
+            },
+            // Temperature is special and requires functions, not just factors. Base is Celsius
+            temperature: {
+                celsius: { name: "Celsius (°C)", toBase: (c) => c, fromBase: (c) => c }, 
+                fahrenheit: { name: "Fahrenheit (°F)", toBase: (f) => (f - 32) * 5 / 9, fromBase: (c) => (c * 9 / 5) + 32 },
+                kelvin: { name: "Kelvin (K)", toBase: (k) => k - 273.15, fromBase: (c) => c + 273.15 },
+                rankine: { 
+                    name: "Rankine (°R)", 
+                    toBase: (r) => (r - 491.67) * 5 / 9, 
+                    fromBase: (c) => (c * 9 / 5) + 491.67 
+                }
+            },
+            time: {
+                // Base Unit: Second (1)
+                second: { name: "Second (s)", factor: 1 },
+                millisecond: { name: "Millisecond (ms)", factor: 0.001 },
+                microsecond: { name: "Microsecond", factor: 1e-6 },
+                minute: { name: "Minute (min)", factor: 60 },
+                hour: { name: "Hour (hr)", factor: 3600 },
+                day: { name: "Day (d)", factor: 86400 },
+                week: { name: "Week", factor: 604800 },
+                year: { name: "Year (365d)", factor: 31536000 }
+            },
+            speed: {
+                // Base Unit: Meter per Second (1)
+                meterPerSecond: { name: "Meters per Second", factor: 1 },
+                kilometerPerHour: { name: "Kilometers per Hour", factor: 1 / 3.6 }, 
+                milesPerHour: { name: "Miles per Hour", factor: 0.44704 }, 
+                footPerSecond: { name: "Feet per Second", factor: 0.3048 },
+                knot: { name: "Knot (Nautical mph)", factor: 0.514444 }, 
+                mach: { name: "Mach (sea level, approx)", factor: 343 }, 
+            },
+            data: {
+                // Base Unit: Byte (1) - Uses binary prefixes (powers of 1024)
+                byte: { name: "Byte (B)", factor: 1 },
+                kilobyte: { name: "Kilobyte (KB)", factor: KILOBYTE },
+                megabyte: { name: "Megabyte (MB)", factor: MEGABYTE },
+                gigabyte: { name: "Gigabyte (GB)", factor: GIGABYTE },
+                terabyte: { name: "Terabyte (TB)", factor: TERABYTE },
+                bit: { name: "Bit (b)", factor: 1/8 }, 
+            },
+            // --- CATEGORY: PRESSURE ---
+            pressure: {
+                // Base Unit: Pascal (Pa)
+                pascal: { name: "Pascal (Pa)", factor: 1 },
+                kilopascal: { name: "Kilopascal (kPa)", factor: 1000 },
+                bar: { name: "Bar", factor: 100000 },
+                atmosphere: { name: "Atmosphere (atm)", factor: 101325 },
+                psi: { name: "Pound/Square Inch (psi)", factor: 6894.76 },
+                torr: { name: "Torr (mmHg)", factor: 133.322 },
+                millibar: { name: "Millibar (mbar)", factor: 100 }
+            },
+            // --- CATEGORY: ENERGY ---
+            energy: {
+                // Base Unit: Joule (J)
+                joule: { name: "Joule (J)", factor: 1 },
+                kilojoule: { name: "Kilojoule (kJ)", factor: 1000 },
+                calorie: { name: "Calorie (cal)", factor: 4.184 }, // Small calorie
+                kilocalorie: { name: "Kilocalorie (kcal/Cal)", factor: 4184 }, // Food calorie
+                wattHour: { name: "Watt-hour (Wh)", factor: 3600 },
+                kilowattHour: { name: "Kilowatt-hour (kWh)", factor: 3600000 },
+                electronvolt: { name: "Electronvolt (eV)", factor: 1.602176634e-19 },
+                britishThermalUnit: { name: "BTU (IT)", factor: 1055.06 }
+            }
+        };
+
+        // --- DOM Elements ---
+        const categorySelect = document.getElementById('category-select');
+        const fromUnitSelect = document.getElementById('from-unit');
+        const toUnitSelect = document.getElementById('to-unit');
+        const inputValue = document.getElementById('input-value');
+        const outputValue = document.getElementById('output-value');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+
+        // --- Theme Toggle Logic ---
+        /**
+         * Toggles the light/dark theme, updates localStorage, and switches the button icon.
+         */
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeIcon(isDark);
+        }
+
+        /**
+         * Updates the visibility of the sun and moon icons based on the current theme.
+         * @param {boolean} isDark - True if dark mode is active.
+         */
+        function updateThemeIcon(isDark) {
+            const isDarkActive = document.documentElement.classList.contains('dark');
+            if (isDarkActive) {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        }
+
+        // --- Privacy Policy Content (Embedded HTML) ---
+        const PRIVACY_POLICY_HTML = `
+            <h2 class="text-xl font-bold mb-3">Privacy Policy for UnitCV</h2>
+            <p class="text-xs text-gray-500 mb-6 font-mono">Last Updated: November 22, 2025</p>
+
+            <p class="mb-4">The UnitCV application ("the App") is designed to provide quick and accurate unit conversions without tracking or storing any personal data.</p>
+
+            <h3 class="text-lg font-semibold mt-4 mb-2 text-primary dark:text-secondary">1. Information We Do Not Collect</h3>
+            <p class="mb-4">The App is a static, client-side application running entirely in your browser. We do not collect, store, or transmit any personal information, usage data, or conversion history.</p>
+            <p class="mb-2 font-medium">Specifically, we do not collect:</p>
+            <ul class="list-disc list-inside ml-4 space-y-1 text-gray-700 dark:text-gray-300">
+                <li>Names, email addresses, or contact details.</li>
+                <li>IP addresses or location data.</li>
+                <li>Information entered into the conversion fields (input values or unit selections).</li>
+            </ul>
+
+            <h3 class="text-lg font-semibold mt-4 mb-2 text-primary dark:text-secondary">2. Third-Party Services & Advertising</h3>
+            <p class="mb-4">This application uses the following third-party services:</p>
+            <ul class="list-disc list-inside ml-4 space-y-1 text-gray-700 dark:text-gray-300">
+                <li><strong>Google AdSense:</strong> This service is used to display advertisements. AdSense may use cookies and web beacons to collect non-personal information about your visits to this and other websites in order to provide advertisements about goods and services of interest to you. We have no control over the data collection practices of Google AdSense.</li>
+                <li><strong>Google Fonts (Inter):</strong> Used for typography styling. This may involve logging the font files requested.</li>
+            </ul>
+            <p class="mt-4">By using this application, you consent to the processing of data by Google in the manner and for the purposes set out above.</p>
+
+            <h3 class="text-lg font-semibold mt-4 mb-2 text-primary dark:text-secondary">3. Data Storage (Local)</h3>
+            <p class="mb-4">We use your browser's local storage only to remember your last selected **theme preference** (light or dark mode). This data is stored locally on your device and is not transmitted to us or any third party.</p>
+
+            <h3 class="text-lg font-semibold mt-4 mb-2 text-primary dark:text-secondary">4. Changes to this Policy</h3>
+            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+        `;
+
+        /**
+         * Converts the input value from the selected 'from' unit to the selected 'to' unit.
+         */
+        function convert() {
+            const category = categorySelect.value;
+            const units = UNITS[category];
+            const fromKey = fromUnitSelect.value;
+            const toKey = toUnitSelect.value;
+            const value = parseFloat(inputValue.value);
+
+            if (isNaN(value) || !units || !fromKey || !toKey) {
+                outputValue.value = '';
+                return;
+            }
+
+            let result;
+
+            if (category === 'temperature') {
+                // Special handling for temperature (requires functions, not factors)
+                const fromUnit = units[fromKey];
+                const toUnit = units[toKey];
+                
+                // 1. Convert input to the common base unit (Celsius)
+                const valueInBase = fromUnit.toBase(value);
+                
+                // 2. Convert from base unit (Celsius) to the target unit
+                result = toUnit.fromBase(valueInBase);
+                
+            } else {
+                // Standard conversion (using factors relative to the base unit)
+                const fromFactor = units[fromKey].factor;
+                const toFactor = units[toKey].factor;
+
+                // 1. Convert input value to the base unit
+                const valueInBase = value * fromFactor;
+
+                // 2. Convert from the base unit to the target unit
+                result = valueInBase / toFactor;
+            }
+
+            // Display the result, using fixed precision for display, avoiding long scientific notation
+            if (result === 0) {
+                 outputValue.value = '0';
+            } else if (Math.abs(result) < 1e-6 || Math.abs(result) > 1e+10) {
+                // Use scientific notation for very large or very small numbers
+                outputValue.value = result.toExponential(10);
+            } else {
+                // Use maximum of 12 significant digits for general results
+                outputValue.value = result.toPrecision(12).replace(/\.?0+$/, "");
+            }
+        }
+
+        /**
+         * Populates the 'from' and 'to' unit dropdowns based on the selected category.
+         */
+        function populateUnits() {
+            const category = categorySelect.value;
+            const units = UNITS[category];
+            
+            // Clear current options
+            fromUnitSelect.innerHTML = '';
+            toUnitSelect.innerHTML = '';
+
+            const unitKeys = Object.keys(units);
+            const defaultFromKey = unitKeys[0];
+            const defaultToKey = unitKeys[1] || unitKeys[0]; // Use second unit, or first if only one exists
+
+            for (const key of unitKeys) {
+                const unit = units[key];
+                const optionHtml = `<option value="${key}">${unit.name}</option>`;
+                
+                // Add to both selects
+                fromUnitSelect.insertAdjacentHTML('beforeend', optionHtml);
+                toUnitSelect.insertAdjacentHTML('beforeend', optionHtml);
+            }
+
+            // Set default selections
+            fromUnitSelect.value = defaultFromKey;
+            toUnitSelect.value = defaultToKey;
+
+            // Run conversion immediately
+            convert();
+        }
+
+        /**
+         * Shows a modal.
+         * @param {string} id - The ID of the modal element.
+         */
+        function showModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.style.opacity = '1';
+                    const content = modal.querySelector('.modal-content');
+                    content.style.transform = 'translateY(0)';
+                }, 10);
+            }
+        }
+
+        /**
+         * Hides a modal.
+         * @param {string} id - The ID of the modal element.
+         */
+        function hideModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.style.opacity = '0';
+                const content = modal.querySelector('.modal-content');
+                content.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // --- Initialization on Load ---
+        window.onload = function() {
+            // Set initial theme icon
+            updateThemeIcon();
+
+            // Populate the units for the default category and run the first conversion
+            populateUnits();
+            
+            // Populate privacy policy content
+            const policyContent = document.getElementById('policy-content');
+            if (policyContent) {
+                policyContent.innerHTML = PRIVACY_POLICY_HTML;
+            }
+        };
+    </script>
+</body>
+</html>
+
+
+
+
